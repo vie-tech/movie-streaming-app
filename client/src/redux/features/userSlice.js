@@ -15,10 +15,27 @@ export const userSlice = createSlice({
         if (action.payload.token)
           localStorage.setItem("actkn", action.payload.token);
       }
-      state.user = action.payload
+      state.user = action.payload;
     },
-    
 
+    setListFavourites: (state, action) => {
+      state.listFavourites = action.payload;
+    },
+
+    removeFavourites: (state, action) => {
+      const { mediaId } = action.payload;
+      state.listFavourites = [...state.listFavourites].filter(
+        (e) => e.mediaId.toString() !== mediaId.toString()
+      );
+    },
+
+    addFavourite: (state, action) => {
+      state.listFavourites.push(action.payload);
+    },
   },
-
 });
+
+export const { setUser, setListFavourites, removeFavourites, addFavourite } =
+  userSlice.actions;
+
+  export default userSlice.reducer
