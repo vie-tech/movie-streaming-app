@@ -10,7 +10,7 @@ const tokenDecode = (req) => {
       const token = bearerHeader.split(" ")[1];
 
       return jwt.verify(token, process.env.TOKEN_SECRET);
-    }
+    } /////
     return false;
   } catch {
     return false;
