@@ -16,19 +16,19 @@ const main = [
   },
   {
     display: "movies",
-    path: "/movie",
+    path: "/movies",
     icon: <SlideshowOutlinedIcon/>,
-    state: "movie"
+    state: "movies"
   },
   {
     display: "tv series",
-    path: "/tv",
+    path: "/tvseries",
     icon: <LiveTvOutlinedIcon/>,
     state: "tv"
   },
   {
     display: "search",
-    path: "/serach",
+    path: "/search",
     icon: <SearchOutlinedIcon/>,
     state: "search"
   },
