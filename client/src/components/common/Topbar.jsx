@@ -19,6 +19,7 @@ import { setAuthModalOpen } from "../../redux/features/authModalSlice";
 import { setThemeMode } from "../../redux/features/themeModeSlice";
 import Logo from "./Logo";
 import { nanoid } from "nanoid";
+import UserMenu from "./UserMenu";
 
 const ScrollAppBar = ({ children, window }) => {
   const themeMode = useSelector((state) => state.themeMode);
@@ -63,6 +64,10 @@ const Topbar = () => {
     dispatch(setThemeMode(theme));
   };
 
+  const toggleSideBar =()=>{
+    setSideBarOpen(!sideBarOpen)
+  }
+
 
   return (
     <>
@@ -75,6 +80,7 @@ const Topbar = () => {
               <IconButton
                 color="inherit"
                 sx={{ mr: 2, display: { md: "none" } }}
+                onClick={toggleSideBar}
               >
                 <MenuOutlined />
               </IconButton>
@@ -108,6 +114,7 @@ const Topbar = () => {
                 </Button>
                 )
               )}
+
               <IconButton
               sx={{color: "inherit"}}
               onClick={onSwitchTheme}>
@@ -118,7 +125,17 @@ const Topbar = () => {
             {/* Main menu */}
 
             {/* User menu */}
-            
+            <Stack spacing={3} direction='row' alignItems='center'>
+              {!user &&  <Button
+              variant="contained"
+              onClick={()=>dispatch(setAuthModalOpen(true))}
+              >
+                sign in
+                </Button>
+                }
+            </Stack>
+                
+            {user && <UserMenu/>}
             {/* User menu */}
           </Toolbar>
         </AppBar>
